@@ -25,7 +25,7 @@ our @EXPORT = qw(
 	JSpline
 );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 
@@ -118,7 +118,15 @@ Math::JSpline - Native perl extension for multi-dimensional J-Spline curves (ope
 =head1 SYNOPSIS
 
   use Math::JSpline;
-  blah blah blah
+  my($newx,$newy)=&JSpline($subdivision_level, $a, $b, $end_type, \@x, \@y);
+
+where
+
+  $subdivision_level determines how many points to interpolate (1 doubles $#x in the above example). 
+  when $a = $b, this is the "s" paramater described below
+  $end_type is how you want to deal with the start and end points.
+	3=join them up (loop). 2=tangent clamp, 1=end clamp, 0=simple join (refer "see also" below)
+  \@x... any number of array references come next
 
 =head1 DESCRIPTION
 
